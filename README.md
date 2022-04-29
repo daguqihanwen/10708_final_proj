@@ -10,7 +10,7 @@
 ## Datasets
 
 You can get the training datasets here: https://drive.google.com/drive/folders/1J4apkEEPikd5bqbb68T3PgrxUVrvb6YD?usp=sharing
-
+make sure to put it in `$PWD/datasets/`
 ## Running Experiments
 
 Run `python imitation/launchers/launch_train_bc.py --args`
