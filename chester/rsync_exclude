@@ -5,10 +5,5 @@ data/local
 build
 .idea
 .git
-DPI-Net
-videos
 imgs
-wandb
-plotting
-iros_media
 

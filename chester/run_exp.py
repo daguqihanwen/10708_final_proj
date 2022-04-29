@@ -13,7 +13,6 @@ import datetime
 import dateutil.tz
 from tempfile import NamedTemporaryFile
 
-from chester import config, config_ec2
 
 from chester.slurm import to_slurm_command
 from chester.utils_s3 import launch_ec2, s3_sync_code
@@ -78,7 +77,7 @@ def _to_param_val(v):
         return _shellquote(str(v))
 
 
-def to_local_command(params, python_command="python", script=osp.join(config.PROJECT_PATH,
+def to_local_command(params, python_command="python", script=osp.join('./',
                                                                       'scripts/run_experiment.py'),
                      use_gpu=False):
     command = python_command + " " + script
@@ -321,10 +320,7 @@ def run_experiment_lite(
                 exp_prefix, timestamp, exp_count)
         if task.get("log_dir", None) is None:
             # TODO add remote dir here
-            if mode in ['seuss', 'psc', 'autobot', 'satori']:
-                task["log_dir"] = config.REMOTE_LOG_DIR[mode] + "/local/" + exp_prefix + "/" + task["exp_name"]
-            else:
-                task["log_dir"] = config.LOG_DIR + "/local/" + exp_prefix + "/" + task["exp_name"]
+            task["log_dir"] = './' + "/local/" + exp_prefix + "/" + task["exp_name"]
         if task.get("variant", None) is not None:
             variant = task.pop("variant")
             if "exp_name" not in variant:
@@ -346,7 +342,7 @@ def run_experiment_lite(
             command = to_local_command(
                 task,
                 python_command=python_command,
-                script=osp.join(config.PROJECT_PATH, script)
+                script=osp.join('./', script)
             )
             if print_command:
                 print(command)
@@ -367,119 +363,3 @@ def run_experiment_lite(
                 if isinstance(e, KeyboardInterrupt):
                     raise
             return popen_obj
-    elif mode == 'local_singularity':
-        for task in batch_tasks:
-            env = task.pop("env", None)
-            command = to_local_command(
-                task,
-                python_command=python_command,
-                script=osp.join(config.PROJECT_PATH, script)
-            )
-            if print_command:
-                print(command)
-            if dry:
-                return
-            try:
-                if env is None:
-                    env = dict()
-                # TODO add argument for specifying container
-                singularity_header = 'singularity exec ./chester/containers/ubuntu-16.04-lts-rl.img'
-                command = singularity_header + ' ' + command
-                subprocess.call(
-                    command, shell=True, env=dict(os.environ, **env))
-                popen_obj = None
-            except Exception as e:
-                print(e)
-                if isinstance(e, KeyboardInterrupt):
-                    raise
-            return popen_obj
-    elif mode in ['seuss', 'psc', 'autobot', 'satori']:
-        for task in batch_tasks:
-            # TODO check remote directory
-            remote_dir = config.REMOTE_DIR[mode]
-            simg_dir = config.SIMG_DIR[mode]
-            # query_yes_no('Confirm: Syncing code to {}:{}'.format(mode, remote_dir))
-            rsync_code(remote_host=mode, remote_dir=remote_dir)
-            data_dir = os.path.join('data', 'local', exp_prefix, task['exp_name'])
-            if mode == 'psc' and use_gpu:
-                header = config.REMOTE_HEADER[mode + '_gpu']
-            else:
-                header = config.REMOTE_HEADER[mode]
-            header = header + "\n#SBATCH -o " + os.path.join(remote_dir, data_dir, 'slurm.out') + " # STDOUT"
-            header = header + "\n#SBATCH -e " + os.path.join(remote_dir, data_dir, 'slurm.err') + " # STDERR"
-            if simg_dir.find('$') == -1:
-                simg_dir = osp.join(remote_dir, simg_dir)
-            set_egl_gpu = True if mode == 'autobot' else False
-            command_list = to_slurm_command(
-                task,
-                use_gpu=use_gpu,
-                modules=config.MODULES[mode],
-                cuda_module=config.CUDA_MODULE[mode],
-                header=header,
-                python_command=python_command,
-                script=osp.join(remote_dir, script),
-                simg_dir=simg_dir,
-                remote_dir=remote_dir,
-                mount_options=config.REMOTE_MOUNT_OPTION[mode],
-                compile_script=compile_script,
-                wait_compile=wait_compile,
-                set_egl_gpu=set_egl_gpu
-            )
-            if print_command:
-                print("; ".join(command_list))
-            command = "\n".join(command_list)
-            script_name = './' + task['exp_name']
-            remote_script_name = os.path.join(remote_dir, data_dir, task['exp_name'])
-            with open(script_name, 'w') as f:
-                f.write(command)
-            os.system("ssh {host} \'{cmd}\'".format(host=mode, cmd='mkdir -p ' + os.path.join(remote_dir, data_dir)))
-            os.system('scp {f1} {host}:{f2}'.format(f1=script_name, f2=remote_script_name, host=mode))  # Copy script
-            if not dry:
-                os.system("ssh " + mode + " \'sbatch " + remote_script_name + "\'")  # Launch
-            # Cleanup
-            os.remove(script_name)
-    elif mode == 'csail':
-        # Launcher is running on the compute node, so no needed to sync codes
-        available_nodes = []
-        for task in batch_tasks:
-            command = to_local_command(
-                task,
-                python_command=python_command,
-                script=osp.join(config.PROJECT_PATH, script)
-            )
-            if print_command:
-                print(command)
-            remote_dir = config.REMOTE_DIR[mode]
-            print
-
-    elif mode == 'ec2':
-        # if docker_image is None:
-        #     docker_image = config.DOCKER_IMAGE
-        s3_code_path = s3_sync_code(config_ec2, dry=dry)
-        for task in batch_tasks:
-            task["remote_log_dir"] = osp.join(config_ec2.AWS_S3_PATH, exp_prefix.replace("_", "-"), task["exp_name"])
-            if compile_script is None:
-                task["pre_commands"] = [". ./prepare_ec2.sh", 'time ./compile.sh']
-            else:
-                task["pre_commands"] = [". ./prepare_ec2.sh", 'time ./' + compile_script]
-        launch_ec2(batch_tasks,
-                   exp_prefix=exp_prefix,
-                   docker_image=None,  # Currently not using docker
-                   python_command=python_command,
-                   script=script,
-                   aws_config=None,
-                   dry=dry,
-                   terminate_machine=True,
-                   use_gpu=use_gpu,
-                   code_full_path=s3_code_path,
-                   sync_s3_pkl=True,
-                   sync_s3_html=True,
-                   sync_s3_png=True,
-                   sync_s3_log=True,
-                   sync_s3_gif=True,
-                   sync_s3_mp4=True,
-                   sync_s3_pth=True,
-                   sync_s3_txt=True,
-                   sync_log_on_termination=True,
-                   periodic_sync=True,
-                   periodic_sync_interval=15)
