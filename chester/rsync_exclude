@@ -1,0 +1,14 @@
+*.img
+data
+data/local
+*__pycache__*
+build
+.idea
+.git
+DPI-Net
+videos
+imgs
+wandb
+plotting
+iros_media
+

@@ -1,0 +1,26 @@
+{
+    "os": "Linux-5.11.0-27-generic-x86_64-with-glibc2.17",
+    "python": "3.8.11",
+    "heartbeatAt": "2021-10-27T22:21:08.963701",
+    "startedAt": "2021-10-27T22:21:07.362267",
+    "docker": null,
+    "gpu": "GeForce RTX 2080 Ti",
+    "gpu_count": 4,
+    "cpu_count": 48,
+    "cuda": null,
+    "args": [
+        "-f",
+        "/home/jianrenw/.local/share/jupyter/runtime/kernel-5a04e1ff-ad2a-4075-827f-8ce6b0136cc6.json"
+    ],
+    "state": "running",
+    "program": "imitation/test_train_emd_bc.ipynb",
+    "root": "/home/jianrenw/carl/research/dev/PlasticineLab",
+    "git": {
+        "remote": "https://github.com/Xingyu-Lin/PlasticineLab.git",
+        "commit": "3114eb281580116b6da024bd93fe2b8f89747cfb"
+    },
+    "email": "daguqihanwen@berkeley.edu",
+    "host": "rpad-desktop",
+    "username": "jianrenw",
+    "executable": "/home/jianrenw/miniconda3/envs/dough/bin/python"
+}

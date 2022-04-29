@@ -1,0 +1,19 @@
+
+[I 10/27/21 18:21:11.221 1331952] [shell.py:_shell_pop_print@35] Graphical python shell detected, using wrapped sys.stdout
+[34m[1mwandb[39m[22m: [33mWARNING[39m Calling run.save without any arguments is deprecated.Changes to attributes are automatically persisted.
+Logging to ./data/debug
+[I 10/27/21 18:23:10.033 1332645] [shell.py:_shell_pop_print@35] Graphical python shell detected, using wrapped sys.stdout
+/home/jianrenw/carl/research/dev/PlasticineLab
+[Taichi] mode=release
+[Taichi] preparing sandbox at /tmp/taichi-2urlrsgx
+[Taichi] version 0.7.26, llvm 10.0.0, commit e37bdb5e, linux, python 3.8.11
+[I 10/27/21 18:23:55.250 1328737] [shell.py:_shell_pop_print@35] Graphical python shell detected, using wrapped sys.stdout
+Logging to ./data/debug
+datasets/1006_Roll
+Loading dataset in data/debug/dataset.gz
+Loading dataset from data/debug/dataset.gz
+0 nan actions detected. making them zero.
+buffer size: 50
+class Agent: obs_shape:  (64, 64, 6)
+eval_idxes: [0]
+Logging to ./data/debug

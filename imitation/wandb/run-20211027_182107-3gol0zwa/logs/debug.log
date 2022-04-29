@@ -1,0 +1,131 @@
+2021-10-27 18:21:07,363 INFO    MainThread:1328737 [wandb_setup.py:_flush():71] setting env: {}
+2021-10-27 18:21:07,364 INFO    MainThread:1328737 [wandb_setup.py:_flush():71] setting login settings: {}
+2021-10-27 18:21:07,364 INFO    MainThread:1328737 [wandb_init.py:_log_setup():357] Logging user logs to /home/jianrenw/carl/research/dev/PlasticineLab/imitation/wandb/run-20211027_182107-3gol0zwa/logs/debug.log
+2021-10-27 18:21:07,364 INFO    MainThread:1328737 [wandb_init.py:_log_setup():358] Logging internal logs to /home/jianrenw/carl/research/dev/PlasticineLab/imitation/wandb/run-20211027_182107-3gol0zwa/logs/debug-internal.log
+2021-10-27 18:21:07,364 INFO    MainThread:1328737 [wandb_init.py:_jupyter_setup():307] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x7f256c4effa0>
+2021-10-27 18:21:07,364 INFO    MainThread:1328737 [wandb_init.py:init():390] calling init triggers
+2021-10-27 18:21:07,364 INFO    MainThread:1328737 [wandb_init.py:init():395] wandb.init called with sweep_config: {}
+config: {}
+2021-10-27 18:21:07,364 INFO    MainThread:1328737 [wandb_init.py:init():435] starting backend
+2021-10-27 18:21:07,364 INFO    MainThread:1328737 [backend.py:_multiprocessing_setup():94] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2021-10-27 18:21:07,403 INFO    MainThread:1328737 [backend.py:ensure_launched():198] starting backend process...
+2021-10-27 18:21:07,415 INFO    MainThread:1328737 [backend.py:ensure_launched():203] started backend process with pid: 1331861
+2021-10-27 18:21:07,416 INFO    MainThread:1328737 [wandb_init.py:init():444] backend started and connected
+2021-10-27 18:21:07,426 INFO    MainThread:1328737 [wandb_run.py:_label_probe_notebook():866] probe notebook
+2021-10-27 18:21:07,426 INFO    MainThread:1328737 [wandb_run.py:_label_probe_notebook():876] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2021-10-27 18:21:07,427 INFO    MainThread:1328737 [wandb_init.py:init():503] updated telemetry
+2021-10-27 18:21:07,457 INFO    MainThread:1328737 [wandb_init.py:init():533] communicating current version
+2021-10-27 18:21:08,005 INFO    MainThread:1328737 [wandb_init.py:init():538] got version response upgrade_message: "wandb version 0.12.6 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2021-10-27 18:21:08,006 INFO    MainThread:1328737 [wandb_init.py:init():548] communicating run to backend with 30 second timeout
+2021-10-27 18:21:08,149 INFO    MainThread:1328737 [wandb_init.py:init():576] starting run threads in backend
+2021-10-27 18:21:11,034 INFO    MainThread:1328737 [wandb_run.py:_console_start():1693] atexit reg
+2021-10-27 18:21:11,034 INFO    MainThread:1328737 [wandb_run.py:_redirect():1567] redirect: SettingsConsole.WRAP
+2021-10-27 18:21:11,034 INFO    MainThread:1328737 [wandb_run.py:_redirect():1604] Wrapping output streams.
+2021-10-27 18:21:11,035 INFO    MainThread:1328737 [wandb_run.py:_redirect():1628] Redirects installed.
+2021-10-27 18:21:11,035 INFO    MainThread:1328737 [wandb_init.py:init():603] run started, returning control to user process
+2021-10-27 18:21:11,036 INFO    MainThread:1328737 [wandb_run.py:_config_callback():911] config_cb None None {'env_name': 'Roll-v1', 'exp_prefix': '1026_Roll_BC_Image', 'num_env': 1, 'algo': 'imitation', 'dataset_name': 'tmp', 'seed': 100, 'gd_num_steps': 50, 'lr': 0.02, 'softness': 666.0, 'optim': 'Adam', 'num_trajs': 20, 'energy_weight': 0.0, 'vel_loss_weight': 0.0, 'il_num_epoch': 5000, 'il_lr': 0.001, 'il_eval_freq': 1, 'batch_size': 50, 'step_per_epoch': 500, 'step_warmup': 2000, 'hindsight_goal_ratio': 0.5, 'debug_overfit_test': False, 'obs_noise': 0.05, 'resume_path': None, 'num_tools': 1, 'frame_stack': 1, 'image_dim': 64, 'img_mode': 'rgb', 'pos_ratio': 0.5, 'pos_reset_ratio': 0.2, 'z_dim': 32, 'actor_feature_dim': 128, 'encoder_beta': 10.0, 'bin_succ': False, 'adam_sample': 400, 'adam_iter': 3000, 'adam_lr': 0.05, 'min_zlogl': -30, 'save_goal_his': False, 'plan_step': 2, 'task': 'train_policy', 'num_epoch': 100, 'dataset_path': 'data/debug/dataset.gz'}
+2021-10-27 18:21:43,230 INFO    MainThread:1328737 [wandb_init.py:_pause_backend():270] pausing backend
+2021-10-27 18:21:43,230 INFO    MainThread:1328737 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2021-10-27 18:23:06,828 INFO    MainThread:1328737 [wandb_init.py:_resume_backend():279] resuming backend
+2021-10-27 18:23:06,832 INFO    MainThread:1328737 [wandb_init.py:_pause_backend():270] pausing backend
+2021-10-27 18:23:06,832 INFO    MainThread:1328737 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2021-10-27 18:23:09,952 INFO    MainThread:1328737 [wandb_init.py:_resume_backend():279] resuming backend
+2021-10-27 18:23:41,481 INFO    MainThread:1328737 [wandb_init.py:_pause_backend():270] pausing backend
+2021-10-27 18:23:41,482 INFO    MainThread:1328737 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2021-10-27 18:23:55,199 INFO    MainThread:1328737 [wandb_init.py:_resume_backend():279] resuming backend
+2021-10-27 18:23:56,803 INFO    MainThread:1328737 [wandb_init.py:_pause_backend():270] pausing backend
+2021-10-27 18:23:56,803 INFO    MainThread:1328737 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2021-10-27 18:24:01,910 INFO    MainThread:1328737 [wandb_init.py:_resume_backend():279] resuming backend
+2021-10-27 18:24:51,606 INFO    MainThread:1328737 [wandb_init.py:_pause_backend():270] pausing backend
+2021-10-27 18:24:51,606 INFO    MainThread:1328737 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2021-10-27 18:27:29,048 INFO    MainThread:1328737 [wandb_init.py:_resume_backend():279] resuming backend
+2021-10-27 18:27:39,845 INFO    MainThread:1328737 [wandb_init.py:_pause_backend():270] pausing backend
+2021-10-27 18:27:39,845 INFO    MainThread:1328737 [jupyter.py:save_ipynb():374] not saving jupyter notebook
+2021-10-27 18:27:51,103 INFO    MainThread:1328737 [wandb_run.py:_atexit_cleanup():1663] got exitcode: 0
+2021-10-27 18:27:51,103 INFO    MainThread:1328737 [wandb_run.py:_restore():1635] restore
+2021-10-27 18:27:51,501 INFO    MainThread:1328737 [wandb_run.py:_wait_for_finish():1793] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 888
+  total_bytes: 888
+}
+
+2021-10-27 18:27:51,644 INFO    MainThread:1328737 [wandb_run.py:_wait_for_finish():1793] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 888
+  total_bytes: 888
+}
+
+2021-10-27 18:27:52,276 INFO    MainThread:1328737 [wandb_run.py:_wait_for_finish():1793] got exit ret: file_counts {
+  wandb_count: 3
+}
+pusher_stats {
+  uploaded_bytes: 888
+  total_bytes: 10647
+}
+
+2021-10-27 18:27:52,378 INFO    MainThread:1328737 [wandb_run.py:_wait_for_finish():1793] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 888
+  total_bytes: 13669
+}
+
+2021-10-27 18:27:52,480 INFO    MainThread:1328737 [wandb_run.py:_wait_for_finish():1793] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 13669
+  total_bytes: 13669
+}
+
+2021-10-27 18:27:52,582 INFO    MainThread:1328737 [wandb_run.py:_wait_for_finish():1793] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 13669
+  total_bytes: 13669
+}
+
+2021-10-27 18:27:52,684 INFO    MainThread:1328737 [wandb_run.py:_wait_for_finish():1793] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 13669
+  total_bytes: 13669
+}
+
+2021-10-27 18:27:52,785 INFO    MainThread:1328737 [wandb_run.py:_wait_for_finish():1793] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 13669
+  total_bytes: 13669
+}
+
+2021-10-27 18:27:53,015 INFO    MainThread:1328737 [wandb_run.py:_wait_for_finish():1793] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 13669
+  total_bytes: 13669
+}
+
+2021-10-27 18:27:53,325 INFO    MainThread:1328737 [wandb_run.py:_wait_for_finish():1793] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 13669
+  total_bytes: 13669
+}
+local_info {
+}
+

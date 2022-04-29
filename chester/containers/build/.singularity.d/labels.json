@@ -1,0 +1,8 @@
+{
+	"org.label-schema.build-arch": "amd64",
+	"org.label-schema.build-date": "Friday_22_October_2021_17:34:5_EDT",
+	"org.label-schema.schema-version": "1.0",
+	"org.label-schema.usage.singularity.deffile.bootstrap": "localimage",
+	"org.label-schema.usage.singularity.deffile.from": "alpine_latest.sif",
+	"org.label-schema.usage.singularity.version": "3.9.0-rc.1"
+}
